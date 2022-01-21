@@ -5,43 +5,43 @@
 
 struct Student
 {
-	std::string Name;//имя студента
-	std::string GroupId;//id группы
-	std::vector<unsigned> Ratings;//оценки по соответствующему предмету из поля Subjects
-	std::vector<std::string> Subjects;//предмет
+	std::string Name;//РёРјСЏ СЃС‚СѓРґРµРЅС‚Р°
+	std::string GroupId;//id РіСЂСѓРїРїС‹
+	std::vector<unsigned> Ratings;//РѕС†РµРЅРєРё РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРјСѓ РїСЂРµРґРјРµС‚Сѓ РёР· РїРѕР»СЏ Subjects
+	std::vector<std::string> Subjects;//РїСЂРµРґРјРµС‚
 };
 
-//-------------Блок 1. Сортировка по имени------------------------
+//Р—Р°РґР°С‡Р° 1. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РёРјРµРЅРё------------------------
 bool comparatorByName(Student student1, Student student2) {
 	std::string str1 = student1.Name;
 	std::string str2 = student2.Name;
 
-	if (str1 == str2)//если имена совпадают
+	if (str1 == str2)//РµСЃР»Рё РёРјРµРЅР° СЃРѕРІРїР°РґР°СЋС‚
 		return false;
 
 	for (int i = 0; i < str1.length() && i < str2.length(); i++) {
 		if (str1[i] != str2[i]) {
-			if (str1[i] < str2[i])//если символ не совпал
+			if (str1[i] < str2[i])//РµСЃР»Рё СЃРёРјРІРѕР» РЅРµ СЃРѕРІРїР°Р»
 				return true;
 			else
 				return false;
 		}
 	}
-	//если первая часть строки совпала, то выбираем ту, что короче
+	//РµСЃР»Рё РїРµСЂРІР°СЏ С‡Р°СЃС‚СЊ СЃС‚СЂРѕРєРё СЃРѕРІРїР°Р»Р°, С‚Рѕ РІС‹Р±РёСЂР°РµРј С‚Сѓ, С‡С‚Рѕ РєРѕСЂРѕС‡Рµ
 	if (str1.length() < str2.length())
 		return true;
 	else
 		return false;
 }
 
-void SortByName(std::vector<Student>& students) {//сортировка всех студентов по именам
+void SortByName(std::vector<Student>& students) {//СЃРѕСЂС‚РёСЂРѕРІРєР° РІСЃРµС… СЃС‚СѓРґРµРЅС‚РѕРІ РїРѕ РёРјРµРЅР°Рј
 	std::sort(students.begin(), students.end(), comparatorByName);
 }
 //--------------------------------------------------------------------
 
 
 
-//-------------Блок 2. Сортировка по средней оценке---------------------
+//Р—Р°РґР°С‡Р° 2. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЃСЂРµРґРЅРµР№ РѕС†РµРЅРєРµ---------------------
 
 double averageRating(Student student) {
 	double rating1 = 0;
@@ -74,7 +74,7 @@ void SortByRating(std::vector<Student>& students) {
 
 
 
-//----Блок 3. Количество студентов, имеющих неудовлетворительную оценку хотя бы по одному предмету----------
+//Р—Р°РґР°С‡Р° 3. РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ, РёРјРµСЋС‰РёС… РЅРµСѓРґРѕРІР»РµС‚РІРѕСЂРёС‚РµР»СЊРЅСѓСЋ РѕС†РµРЅРєСѓ С…РѕС‚СЏ Р±С‹ РїРѕ РѕРґРЅРѕРјСѓ РїСЂРµРґРјРµС‚Сѓ
 
 size_t CountTwoness(const std::vector<Student>& students) {
 
@@ -84,7 +84,7 @@ size_t CountTwoness(const std::vector<Student>& students) {
 		std::vector<unsigned>::iterator iterRatings = (*iter).Ratings.begin();
 		bool excellent = true;
 		for (; iterRatings != (*iter).Ratings.end(); iterRatings++) {
-			if ((*iterRatings) < 3) {//если у студента хоть одна оценка, ниже тройки
+			if ((*iterRatings) < 3) {//РµСЃР»Рё Сѓ СЃС‚СѓРґРµРЅС‚Р° С…РѕС‚СЊ РѕРґРЅР° РѕС†РµРЅРєР° РЅРёР¶Рµ С‚СЂРѕР№РєРё
 				excellent = false;
 				break;
 			}
@@ -97,7 +97,7 @@ size_t CountTwoness(const std::vector<Student>& students) {
 
 //--------------------------------------------------------------------
 
-//----Блок 4. Определит, сколько студентов сдали все экзамены на 5----------
+//Р—Р°РґР°С‡Р° 4. РћРїСЂРµРґРµР»РёС‚, СЃРєРѕР»СЊРєРѕ СЃС‚СѓРґРµРЅС‚РѕРІ СЃРґР°Р»Рё РІСЃРµ СЌРєР·Р°РјРµРЅС‹ РЅР° 5----------
 
 size_t CountExcellent(const std::vector<Student>& students) {
 
@@ -107,7 +107,7 @@ size_t CountExcellent(const std::vector<Student>& students) {
 		std::vector<unsigned>::iterator iterRatings = (*iter).Ratings.begin();
 		bool excellent = true;
 		for (; iterRatings != (*iter).Ratings.end(); iterRatings++) {
-			if ((*iterRatings) != 5) {//если у студента хоть одна оценка - не пятерка
+			if ((*iterRatings) != 5) {//РµСЃР»Рё Сѓ СЃС‚СѓРґРµРЅС‚Р° С…РѕС‚СЊ РѕРґРЅР° РѕС†РµРЅРєР° РЅРµ РїСЏС‚РµСЂРєР°
 				excellent = false;
 				break;
 			}
@@ -121,7 +121,7 @@ size_t CountExcellent(const std::vector<Student>& students) {
 //--------------------------------------------------------------------
 
 
-//----Блок 5. Создаст массив std::vector<Student>, в который войдут студенты имеющие отметку отлично, по предмету "Math";----------
+//Р—Р°РґР°С‡Р° 5. РЎРѕР·РґР°РµС‚ РјР°СЃСЃРёРІ std::vector<Student>, РІ РєРѕС‚РѕСЂС‹Р№ РёРґСѓС‚ СЃС‚СѓРґРµРЅС‚С‹ РёРјРµСЋС‰РёРµ РѕС‚РјРµС‚РєСѓ РѕС‚Р»РёС‡РЅРѕ РїРѕ РїСЂРµРґРјРµС‚Сѓ "Math";----------
 
 std::vector<Student> VectorMathExcellent(const std::vector<Student>& students) {
 
@@ -150,7 +150,7 @@ std::vector<Student> VectorMathExcellent(const std::vector<Student>& students) {
 
 //--------------------------------------------------------------------
 
-//----Блок 6. Вернет массив уникальных названий групп студентов из списка students----------
+//Р—Р°РґР°С‡Р° 6. Р’РµСЂРЅРµС‚ РјР°СЃСЃРёРІ СѓРЅРёРєР°Р»СЊРЅС‹С… РЅР°Р·РІР°РЅРёР№ РіСЂСѓРїРї СЃС‚СѓРґРµРЅС‚РѕРІ РёР· СЃРїРёСЃРєР° students----------
 
 std::vector<std::string> GroupsId(const std::vector<Student>& students) {
 
@@ -176,7 +176,7 @@ std::vector<std::string> GroupsId(const std::vector<Student>& students) {
 //--------------------------------------------------------------------
 
 
-//----Блок 7. Вернет массив уникальных названий групп студентов из списка students----------
+//Р—Р°РґР°С‡Р° 7. Р’РµСЂРЅРµС‚ РјР°СЃСЃРёРІ СѓРЅРёРєР°Р»СЊРЅС‹С… РЅР°Р·РІР°РЅРёР№ РіСЂСѓРїРї СЃС‚СѓРґРµРЅС‚РѕРІ РёР· СЃРїРёСЃРєР° students----------
 
 
 struct Group
@@ -187,11 +187,11 @@ struct Group
 
 std::vector<Group> Groups(const std::vector<Student>& students) {
 
-	std::vector<std::string> idVec = GroupsId(students);//получаем массив уникальных названий группы
+	std::vector<std::string> idVec = GroupsId(students);//РїРѕР»СѓС‡Р°РµРј РјР°СЃСЃРёРІ СѓРЅРёРєР°Р»СЊРЅС‹С… РЅР°Р·РІР°РЅРёР№ РіСЂСѓРїРїС‹
 	std::vector<Group> groups;
 	for (std::vector<std::string>::iterator iterString = idVec.begin(); iterString != idVec.end(); iterString++) {
 		Group group;
-		group.Id = *iterString;//присваиваем новой группе id и добавляем в вектор
+		group.Id = *iterString;//РїСЂРёСЃРІР°РёРІР°РµРј РЅРѕРІРѕР№ РіСЂСѓРїРїРµ id Рё РґРѕР±Р°РІР»СЏРµРј РІ РІРµРєС‚РѕСЂ
 		groups.push_back(group);
 	}
 
@@ -203,7 +203,7 @@ std::vector<Group> Groups(const std::vector<Student>& students) {
 
 		for (std::vector<Group>::iterator iterGroup = groups.begin(); iterGroup != groups.end(); iterGroup++) {
 			if (id == (*iterGroup).Id) {
-				(*iterGroup).Students.push_back(*iter);//добавляем студента в группу
+				(*iterGroup).Students.push_back(*iter);//РґРѕР±Р°РІР»СЏРµРј СЃС‚СѓРґРµРЅС‚Р° РІ РіСЂСѓРїРїСѓ
 				break;
 			}
 		}
